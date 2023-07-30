@@ -1,0 +1,177 @@
+BASH SCRIPTING
+
+
+A Shell language
+Bourne Again Shell replaced in Unix
+$echo Hello (Command) (Argument) (Displays the typed text)
+$cat Hello  (Dipslays the contents of a file)
+Vim (good text editor for linux distributions)
+$vim textfile.txt (creating a file)
+press i button to strat the text and then press escape button
+:w (write the file and save the changes)
+:q (to exit the file)
+:wq (writing and quitting the file)
+:q! (ignoring the changes made)
+$cat vim textfile.txt (Should display the content of the file)
+
+Writing a bash script
+$vim shelltest.sh
+Append mode write after the cursor
+insert mode write before the cursor
+$ls (to list the files in the directory)
+$pwd (Verifying the directory)
+$bash shelltest.sh (Output the command in the interpreter)
+$echo $SHELL (To verify running in a bash shell)
+$vim shelltest.sh
+Enter #!/bin/bash (Providing the shell interpreter which path to use)
+$./shelltest.sh
+In Linux we need to give permissions to act as an executable file
+$ls -l (Long format files)
+$chmod u+x shelltest.sh (Owner user permission to access the file)
+$./shelltest.sh (Ouput seen)
+VARIABLES
+$FIRST_NAME=Herbert
+$echo Hello $FIRST_NAME
+In script $vim hellothere.sh
+#!/bin/bash
+FIRST_NAME=Herbert
+LAST_NAME=Lindemans
+echo Hello $FIRST_NAME $LAST_NAME
+$vim interactiveshell.sh
+Inside
+#!/bin/bash
+echo What is your first name?
+read FIRST_NAME
+echo What is your last name?
+read LAST_NAME
+echo Hello $FIRST_NAME $LAST_NAME
+POSITIONAL ARGUMENTS
+$vim posargu.sh
+#!/bin/bash
+echo Hello $1 $2
+Ouput/input redirection
+Piping (Filter some things out)
+$ls -l /usr/bin | grep bash (BAsh binaries)
+Ouput Redirection
+Send output commands to a file
+$echo Hello World! > hello.txt
+$cat hello.txt
+$echo Good day to you! > hello.txt
+$cat hello.txt (Overwritten the text)
+$rm hello.txt
+$echo Hello world >> hello.txt
+$cat hello.txt
+$echo Good day to you >> hello.txt
+$cat hello.txt
+$ wc -w hello.txt (Also shows the file name)
+$ wc -w < hello.txt
+Multiple lines of text (Double)
+$ cat << EOF
+> I will
+>write some
+> text here
+> EOF
+$ wc -w <<< "Hello there word count"
+TEST OPERATORS
+$ [ hello = hello ]
+$ echo $?  0 is correct
+$ [ 1 = 0 ]
+$ echo $? 1 is not correct
+$ [ 1 -eq 1]
+$ echo $? 
+
+If/elif/else
+vim ifelifelse.sh
+We use here parameter expansion
+if [ ${1,,} = herbert ]; then
+	echo "oh, you are the boss here. Welcome!"
+elif [ ${1,,} = help ]; then
+	echo "Just enter your username, duh!"
+else
+	echo "I don't know who you are . Nut you are not the boss of me!"
+fi
+./ifelifelse.sh herbert
+./ifelifelse.sh help
+./ifelifelse.sh someone
+CASE STATMENTS (Used when to check multiple values)
+Here piping is used for multiple values
+vim login.sh
+case ${1,,} in
+	herbert | administrator)
+		echo "Hello, you are the boss here!"
+		;;
+	help)
+		echo "Just enter your username!"
+		;;
+	*)
+		echo "Hello there. You are not the boss of me. Enter the valid username!"
+esac
+ARRAYS:
+$MY_FIRST_LIST=(one two three four five)
+echo $MY_FIRST_LIST  (one)
+echo ${MY_FIRST_LIST[@]} (one two three four five)
+echo ${MY_FIRST_LIST[0]} (one)
+
+FOR LOOP:
+$ for item in ${MY_FIRST_LIST[@]}; do echo -n $item  | wc -c; done  Result: 3 3 5 4 4
+FUNCTIONS
+vim firstfunction.sh
+up="before"
+since="function"
+echo $up
+echo $since
+showuptime(){
+	local up=$(uptime -p | cut  -c4-)
+	local since=$(uptime -s)
+	cat << EOF
+-----
+This machine has been up for ${up}
+It has been running since ${since}
+-----
+EOF
+}
+showuptime
+echo $up
+echo $since
+vim functionposargu.sh
+showname(){
+	echo hello $1
+}
+showname Herbert
+
+
+EXITCODES
+showname(){
+	echo hello $1
+	if [ ${1,,} = herbert ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+showname $1
+if  [ $? = 1 ]; then
+	echo "Someone unknown called the function!"
+fi
+./functionposrgu.sh test
+AWK:
+Filter parts of a file or command output
+vim testfile.txt
+awk '{print $1}' testfile.txt
+awk '{print $2}' testfile.txt
+vim csvtext.csv
+In that print one, two, three, four
+awk -F, '{print  $1}' csvtest.csv
+echo "Just get this word : Hello" | awk '{print $5}'      result Hello
+echo "Just get this word : Hello" | awk -F: '{print $2}' | cut -c2   result H
+echo "Just get this word : Hello" | awk -F: '{print $2}' | cut -c2-  result Hello
+
+SED
+vim sedtest.txt
+sed 's/fly/grasshopper/g' sedtest.txt
+sed  -i.ORIGINAL 's/fly/grasshopper/g' sedtest.txt
+vim sedtest.txt.ORIGINAL
+
+
+
+
