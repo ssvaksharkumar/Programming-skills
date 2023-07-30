@@ -1,3 +1,4 @@
+ui.R #(User Interface File)
 # Load libraries
 library(shiny)
 library(tidyverse)
@@ -45,6 +46,7 @@ shinyUI(
       column(width=9,plotOutput("p2"))# add plot output
     )
   )
+
 )
 
   
