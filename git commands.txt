@@ -1,3 +1,4 @@
+# WORKED ON THESE BASIC GIT COMMANDS
 GIT COMMANDS
 In GitBash or other terminals
 $git config --global user.name "NAME" Double quotes needed when there is a space
