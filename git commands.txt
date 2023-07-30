@@ -1,0 +1,140 @@
+GIT COMMANDS
+In GitBash or other terminals
+$git config --global user.name "NAME" Double quotes needed when there is a space
+$git config --global user.email ssvaksh@gmail.com
+$git config --global init.default branch main
+$git config --global core.editor "code --wait"
+$git config --global -e (Waiting for the editor)
+$git config --global core.autocrlf true (handling the line endings)
+$git config -h
+$git help config
+$git config --global diff.tool vscode
+$git config --global difftool.vscode.cmd "code --wait --diff $LOCAL $REMOTE"
+$git conifg --global -e
+$clear
+mkdir Moon (Creating a folder)
+and then shifting to the directory
+
+The files location should be given
+In Linux use: cd/mnt/C (Placing file system or deviceg
+$cd c:/users/kevin/KevinCookieCompany.com
+$git init
+We have created a first repository
+Go to view---- show----- click on hidden items
+.git contains all the necessary repository files
+$git status -s (Short status- Left side is staging one and the right side is working one)
+$git status
+to see commits and files present
+$git add index.htm 
+To get a track of that particular file
+$git status
+To see the changes in files
+$git rm --cached index.htm (To remove the file from the staging alone)
+
+I don't want txt file.
+But keep the files as untracked
+Use git reset to bring all the files back to normal
+So I am creating a new file as .gitignore
+Open that .gitignore file in notepad
+There will be nothing
+So type # ignore all.txt files
+*.txt
+
+Now check using $git status
+$git ls-files (Shows the files in the staging area)
+$git add --all  (Tracking all the files) or git add .
+$git commit (Opens the Visual Studio editor)
+$git commit -m "first commit committing all files to the respository" (Writing to the history book)
+$git status (There will be no files to commit)
+To bring a modification to a file
+Open that file in notepad and save the changes
+open git and
+$git status
+shows the modified file
+$git diff (To see what the differences are)
+$git diff --staged (COmpares the staging documents alone)
+$git difftool --staged
+$git difftool
+
+$git add index.htm (Keeps in staging)
+Remove from Staging
+$git restore --staged index.htm (staging to unstaged)
+$git commit -a -m "updated text to free range"(Byepass staging and commit)
+git reset --HEAD^ (Uncommit the last commit and keep the previous changes unstaged)
+git reset --soft HEAD^ (Uncommit the last commit and keep the previous commit in staging area)
+git reset --hard HEAD^ (Uncommit the last commit  and throw away the previous change)
+
+$git rm "secret recipe.htm" (To remove the file from both the working dir and the staging environment)
+$git restore "secret recipe.htm" (To restore the file from deleting)
+$git mv "KCC Logo.png" "Primary Logo.png" (Rename the file)
+$git commit -m "changed the file name of an image"
+$git log(To see all the commits made)
+$git log --oneline (To see all the commits in one line)
+$git log --oneline --reverse (Reverse the commits)
+$git commit -m "Changed file name to Primary Logo.png" --amend (To make minor changes to the commit)
+
+$git log -p (To see what all the changes made in detail with date and time)
+Use Q to quit from the log file
+$git help log
+$git rebase -i --root (can change the orders and commits that appear in the log)
+That takes into an editor and have many options
+Press Colon key and x and press enter to quit from the rebase OR Ctrl +X
+Creating a new branch
+$git branch FixTemp
+To confirm the number of branches we have
+$git branch
+To switch into another branch
+$git switch FixTemp
+Now open a file and update the changes needed to be made
+$git status
+$git commit -a -m "updated temp for baking instructions"
+(updated in FixTemp branch)
+$git switch main (Switching to the main branch)
+$git merge -m "Merge fixtemp back to main" FixTemp (Commiting the changes to the main branch also)
+$git branch -d FixTemp (To delete that branch)
+$git branch (To see the status)
+
+Merging the conflicts
+$git switch -c UpdateText (To create a new branch and switch the branch)
+$git branch
+Now open a file and update the changes needed to be made
+$git commit -a -m "update index text" (Changes will be committed in the switched branch)
+$git switch main (Switching to the main branch)
+$git commit -a -m "update index text"
+$git merge UpdateText (Auto merging failed)
+Open the file and decide what text to keep
+$git commit -a -m "update text on index" (Merge conflict resolved)
+
+$git checkout <branch> (Creates a branch and update the main Ref)
+$git stash (Stash the changes in a dirty working directory and work on others)
+$git stash list
+$git stash pop (Get the changes back to working directory)
+$git tag (Commit a specific change in history)
+$git tag --list
+$git push --tags
+$git show (the commitnumber)
+$git show HEAD~1 (Going one step commit back from HEAD)
+$git show HEAD~1: .gitignore or /bin.app (To see the versions)
+$git ls-tree HEAD~1 (To see the directories and the files present) (Blobs-Files) (Trees-Directories)
+$git clean (To remove the untracked files)
+$git restore --source=HEAD~1 file1.js      (Restoring the file to teh previous version)
+
+
+GITHUB
+$git remote add origin https://github.com/kevstrat/KevinCookieCompany.com.git
+$git branch -M main
+$git push -u origin main
+(To push all the branches)
+$git push --all
+$git fetch (Downloads all the branches from the remote git)
+$git merge (Merging with in the local machine)
+$git pull (COmbination of the above two commands) (brings the commits made)
+$git clone (Bring back all the files)
+
+
+
+
+
+
+
+
