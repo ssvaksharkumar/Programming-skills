@@ -5,12 +5,12 @@ st.subheader("Uploading the CSV File")
 df = st.file_uploader("Uploading the CSV File", type = ["csv","xlsx"])
 
 st.subheader("Reading the CSV File")
-df = pd.read_csv(r"C:\Users\ssvak\PYTHON 2024\python2024\Streamlit\Products.csv")
+df = pd.read_csv("Products.csv")
 if df is not None:
     st.table(df.head())
 
 st.subheader("Displaying the image file")
-st.image(r"C:\Users\ssvak\PYTHON 2024\python2024\Streamlit/img.png")
+st.image("img.png")
 
 st.subheader("Uplading the image file")
 Img = st.file_uploader("Uploading the Image file", type = ["png","jpeg"])
